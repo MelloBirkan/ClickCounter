@@ -30,13 +30,39 @@ class ViewController: UIViewController {
         button.setTitleColor(UIColor.blue, for: .normal)
         view.addSubview(button)
         button.addTarget(self, action: #selector(ViewController.incrementCount), for: .touchUpInside)
+        button.addTarget(self, action: #selector(ViewController.changeColorDragExit), for: .touchDragExit)
         
+        // Decrement Button
+        let decrementButton = UIButton()
+        decrementButton.frame = CGRect(x: 200, y: 200, width: 200, height: 200)
+        decrementButton.setTitle("Click to decrement", for: .normal)
+        decrementButton.setTitleColor(.red, for: .normal)
+        view.addSubview(decrementButton)
+        decrementButton.addTarget(self, action: #selector(ViewController.decrementCount), for: .touchUpInside)
+        decrementButton.addTarget(self, action: #selector(ViewController.changeBackgroundColor), for: .touchUpInside)
+        decrementButton.addTarget(self, action: #selector(ViewController.changeColorDragExit), for: .touchDragExit)
     }
+    
+    
+    
     
    @objc func incrementCount() {
        self.count += 1
        self.label.text = "\(self.count)"
     }
+    
+    @objc func decrementCount() {
+        self.count -= 1
+        self.label.text = "\(self.count)"
+    }
 
+    @objc func changeBackgroundColor() {
+        self.view.backgroundColor = UIColor.lightGray
+}
+
+    @objc func changeColorDragExit() {
+        self.view.backgroundColor = UIColor.green
+    }
+    
 }
 
